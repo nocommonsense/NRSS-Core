@@ -1,0 +1,35 @@
+﻿@using RSS_Feed.ViewModels.Home
+
+@model RSSItemViewModel
+
+@{
+    ViewData["Title"] = "Add new RSS item";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        
+        <div class="text-center">
+            <h2>Add RSS Item</h2>
+        </div>
+
+        <div class="col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+            @using (Html.BeginForm("AddItem", "Home", FormMethod.Post))
+            {
+                Html.AntiForgeryToken();
+
+                Html.LabelFor(c => c.Title);
+                Html.TextBoxFor(c => c.Title, new { @class = "form-control" });
+
+                Html.LabelFor(c => c.Description);
+                Html.TextBoxFor(c => c.Description, new { @class = "form-control" });
+
+                Html.LabelFor(c => c.Link);
+                Html.TextBoxFor(c => c.Link, new { @class = "form-control" });
+                
+            }
+        </div>
+
+    </div>
+</div>
