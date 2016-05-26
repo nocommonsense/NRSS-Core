@@ -18,6 +18,10 @@ namespace RSS_Feed.ViewModels.Home
         public string Link { get; set; }
 
         public bool RSSCreated { get; set; }
+
+        public DateTime? PublishedDate { get; set; }
+
+        public DateTime? UpdatedDate { get; set; }
         
     }
 
@@ -30,6 +34,8 @@ namespace RSS_Feed.ViewModels.Home
         public string Description { get; set; }
 
         public string Link { get; set; }
+
+        public DateTime? PublishedDate { get; set; }
 
     }
 }

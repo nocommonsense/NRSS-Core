@@ -4,11 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RSS_Feed.ViewModels.Home;
+using RSS_Feed.Services;
 
 namespace RSS_Feed.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IRSSService _rssService;
+        
+        public HomeController(IRSSService rssService)
+        {
+            _rssService = rssService;
+        }
+
         public IActionResult Info()
         {
             var vm = new RSSViewModel();
