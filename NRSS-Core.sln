@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RSS Feed", "src\RSS Feed\RSS Feed.xproj", "{2263DD35-C929-4C4A-85A6-FC46F173C082}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NRSS-Core", "src\NRSS-Core\NRSS-Core.xproj", "{2263DD35-C929-4C4A-85A6-FC46F173C082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

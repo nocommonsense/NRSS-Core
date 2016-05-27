@@ -1,16 +1,16 @@
-﻿using RSS_Feed.ViewModels.Home;
+﻿using NRSSCore.ViewModels.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RSS_Feed.Services
+namespace NRSSCore.Services
 {
     public interface IRSSService
     {
         void PopulateRSSInfoViewModel(RSSViewModel vm);
 
-        void AddRSSInfo(RSSViewModel vm);
+        bool AddRSSInfo(RSSViewModel vm);
 
         bool AddRSSItem(RSSItemViewModel vm);
     }

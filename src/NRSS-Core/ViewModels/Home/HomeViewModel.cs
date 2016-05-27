@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RSS_Feed.ViewModels.Home
+namespace NRSSCore.ViewModels.Home
 {
   
     public class RSSViewModel
@@ -22,6 +22,8 @@ namespace RSS_Feed.ViewModels.Home
         public DateTime? PublishedDate { get; set; }
 
         public DateTime? UpdatedDate { get; set; }
+
+        public int TimeToLive { get; set; }
         
     }
 
@@ -36,6 +38,9 @@ namespace RSS_Feed.ViewModels.Home
         public string Link { get; set; }
 
         public DateTime? PublishedDate { get; set; }
+
+        public Guid GUID { get; set; }
+
 
     }
 }

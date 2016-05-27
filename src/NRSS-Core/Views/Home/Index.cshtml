@@ -1,0 +1,56 @@
+﻿@using NRSSCore.ViewModels.Home
+
+@model RSSViewModel
+
+@{
+    ViewData["Title"] = "RSS Feed Info";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="text-center">
+            <h2>RSS Feed Info</h2>
+        </div>
+        @if (Model != null && Model.RSSCreated)
+        {
+            <h4>Current settings</h4>
+
+            @Html.LabelFor(c => c.Title);
+            @Html.DisplayFor(c => c.Title);
+
+            @Html.LabelFor(c => c.Description);
+            @Html.DisplayFor(c => c.Description);
+
+            @Html.LabelFor(c => c.Link);
+            @Html.DisplayFor(c => c.Link);
+
+            @Html.LabelFor(c => c.TimeToLive);
+            @Html.DisplayFor(c => c.TimeToLive);
+        }
+            
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <h4>Change settings</h4>
+
+            @Html.AntiForgeryToken();
+
+            @Html.LabelFor(c => c.Title);
+            @Html.TextBoxFor(c => c.Title, new { @class = "form-control" });
+
+            @Html.LabelFor(c => c.Description);
+            @Html.TextAreaFor(c => c.Description, new { @class = "form-control" });
+
+            @Html.LabelFor(c => c.Link);
+            @Html.TextBoxFor(c => c.Link, new { @class = "form-control" });
+
+            @Html.LabelFor(c => c.TimeToLive);
+            @Html.TextBoxFor(c => c.TimeToLive, new { @class = "form-control" });
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        }
+            
+
+        
+    </div>
+</div>
