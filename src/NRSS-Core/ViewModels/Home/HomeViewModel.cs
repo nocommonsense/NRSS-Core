@@ -20,11 +20,24 @@ namespace NRSSCore.ViewModels.Home
         public bool RSSCreated { get; set; }
 
         public DateTime? PublishedDate { get; set; }
-
+        
         public DateTime? UpdatedDate { get; set; }
 
+        [Display(Name = "Time to Live (minutes)")]
         public int TimeToLive { get; set; }
         
+    }
+
+    public class RSSItemsViewModel
+    {
+        public IList<RSSItemViewModel> RSSItems { get; set; }
+
+        public RSSItemViewModel RSSItem { get; set; }
+    }
+
+    public class EditRSSItemViewModel
+    {
+        public RSSItemViewModel RSSItem { get; set; }
     }
 
     public class RSSItemViewModel
@@ -39,7 +52,7 @@ namespace NRSSCore.ViewModels.Home
 
         public DateTime? PublishedDate { get; set; }
 
-        public Guid GUID { get; set; }
+        public string GUID { get; set; }
 
 
     }

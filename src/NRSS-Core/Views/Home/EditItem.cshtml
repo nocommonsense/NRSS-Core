@@ -1,0 +1,40 @@
+﻿@using NRSSCore.ViewModels.Home
+
+@model EditRSSItemViewModel
+
+@{
+    ViewData["Title"] = "Edit RSS item";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="text-center">
+            <h2>Edit RSS Item</h2>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            @if (Model.RSSItem != null && !string.IsNullOrEmpty(Model.RSSItem.GUID))
+            {
+                using (Html.BeginForm("EditItem", "Home", new { id = Model.RSSItem.GUID }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.LabelFor(c => c.RSSItem.Title)
+                    @Html.TextBoxFor(c => c.RSSItem.Title, new { @class = "form-control" })
+
+                    @Html.LabelFor(c => c.RSSItem.Description)
+                    @Html.TextAreaFor(c => c.RSSItem.Description, new { @class = "form-control" })
+
+                    @Html.LabelFor(c => c.RSSItem.Link)
+                    @Html.TextBoxFor(c => c.RSSItem.Link, new { @class = "form-control" })
+
+                    <button type="submit" class="btn btn-primary tmargin10">Save</button>
+                }
+            }
+            
+        </div>
+
+    </div>
+</div>
+

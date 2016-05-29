@@ -17,6 +17,22 @@ textarea {
     max-width: 280px;
 }
 
+/* Helpers */
+.tmargin10 {
+    margin-top: 10px;
+}
+.tmargin20 {
+    margin-top: 20px;
+}
+.tmargin30 {
+    margin-top: 30px;
+}
+
+.lmargin5{
+    margin-left: 5px;
+}
+
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

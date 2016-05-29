@@ -10,8 +10,16 @@ namespace NRSSCore.Services
     {
         void PopulateRSSInfoViewModel(RSSViewModel vm);
 
+        void PopulateRSSItemsViewModel(RSSItemsViewModel vm);
+
+        void PopulateEditRSSItemViewModel(EditRSSItemViewModel vm, string id);
+
         bool AddRSSInfo(RSSViewModel vm);
 
         bool AddRSSItem(RSSItemViewModel vm);
+
+        bool EditRSSItem(RSSItemViewModel vm, string id);
+
+        bool DeleteRSSItem(string id);
     }
 }

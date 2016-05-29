@@ -38,31 +38,63 @@ namespace NRSSCore.Controllers
                 }
             }
 
-            return View(vm);
+            return RedirectToAction("Index", "Home");
 
         }
 
-        public IActionResult AddItem()
+        public IActionResult Items()
         {
-            var vm = new RSSItemViewModel();
+            var vm = new RSSItemsViewModel();
+            var itemVm = new RSSItemViewModel();
+
+            vm.RSSItem = itemVm;
+
+            _rssService.PopulateRSSItemsViewModel(vm);
+            
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Items(RSSItemsViewModel vm)
+        {
+            if(ModelState.IsValid)
+            {
+                if (!_rssService.AddRSSItem(vm.RSSItem))
+                {
+                    return View(vm);
+                }
+            }
+
+            return RedirectToAction("Items", "Home");
+
+        }
+
+        public IActionResult EditItem(string id)
+        {
+            EditRSSItemViewModel vm = new EditRSSItemViewModel();
+                        
+            _rssService.PopulateEditRSSItemViewModel(vm, id);
 
             return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddItem(RSSItemViewModel vm)
+        public IActionResult EditItem(EditRSSItemViewModel vm, string id)
         {
-            if(ModelState.IsValid)
-            {
-                if (!_rssService.AddRSSItem(vm))
-                {
-                    return View(vm);
-                }
-            }
+            _rssService.EditRSSItem(vm.RSSItem, id);
 
-            return View(vm);
+            return RedirectToAction("Items", "Home");
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteItem(string id)
+        {
+            _rssService.DeleteRSSItem(id);
+
+            return RedirectToAction("Items", "Home");
         }
         
         public IActionResult Error()

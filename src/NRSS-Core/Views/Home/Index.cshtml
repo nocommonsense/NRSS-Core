@@ -12,45 +12,62 @@
         <div class="text-center">
             <h2>RSS Feed Info</h2>
         </div>
+        
         @if (Model != null && Model.RSSCreated)
         {
-            <h4>Current settings</h4>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <h4>Current settings</h4>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Title)
+                    @Html.DisplayFor(c => c.Title)
+                </div>
 
-            @Html.LabelFor(c => c.Title);
-            @Html.DisplayFor(c => c.Title);
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Description)
+                    @Html.DisplayFor(c => c.Description)
+                </div>
 
-            @Html.LabelFor(c => c.Description);
-            @Html.DisplayFor(c => c.Description);
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Link)
+                    @if (!Model.Link.Contains("http"))
+                    {
+                        <a href="http://@Model.Link">@Model.Link</a>
+                    }
+                    else
+                    {
+                        <a href="@Model.Link">@Model.Link</a>
+                    }                    
+                </div>
 
-            @Html.LabelFor(c => c.Link);
-            @Html.DisplayFor(c => c.Link);
-
-            @Html.LabelFor(c => c.TimeToLive);
-            @Html.DisplayFor(c => c.TimeToLive);
+                <div class="form-group">
+                    @Html.LabelFor(c => c.TimeToLive)
+                    @Html.DisplayFor(c => c.TimeToLive)
+                </div>       
+            </div>            
         }
             
-        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-        {
-            <h4>Change settings</h4>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+                <h4>Change settings</h4>
 
-            @Html.AntiForgeryToken();
+                @Html.AntiForgeryToken()
 
-            @Html.LabelFor(c => c.Title);
-            @Html.TextBoxFor(c => c.Title, new { @class = "form-control" });
+                @Html.LabelFor(c => c.Title)
+                @Html.TextBoxFor(c => c.Title, new { @class = "form-control" })
 
-            @Html.LabelFor(c => c.Description);
-            @Html.TextAreaFor(c => c.Description, new { @class = "form-control" });
+                @Html.LabelFor(c => c.Description)
+                @Html.TextAreaFor(c => c.Description, new { @class = "form-control" })
 
-            @Html.LabelFor(c => c.Link);
-            @Html.TextBoxFor(c => c.Link, new { @class = "form-control" });
+                @Html.LabelFor(c => c.Link)
+                @Html.TextBoxFor(c => c.Link, new { @class = "form-control" })
 
-            @Html.LabelFor(c => c.TimeToLive);
-            @Html.TextBoxFor(c => c.TimeToLive, new { @class = "form-control" });
+                @Html.LabelFor(c => c.TimeToLive)
+                @Html.TextBoxFor(c => c.TimeToLive, new { @class = "form-control" })
 
-            <button type="submit" class="btn btn-primary">Save</button>
-        }
-            
-
-        
+                <button type="submit" class="btn btn-primary col-lg-offset-4 col-md-offset-4 tmargin10">Save</button>
+            }
+        </div>
+                
     </div>
 </div>

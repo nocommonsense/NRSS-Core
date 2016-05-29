@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
-    <title>test title</title>
-    <description>test description</description>
-    <link>hello</link>
-    <pubDate></pubDate>
-    <lastBuildDate></lastBuildDate>
-    <ttl>1</ttl>
+    <title>test1</title>
+    <description>teeeesst1</description>
+    <link>www.bbc.co.uk</link>
+    <pubDate>Sun, 29 May 2016 21:04:30 +0100</pubDate>
+    <lastBuildDate>Sun, 29 May 2016 21:04:30 +0100</lastBuildDate>
+    <ttl>1800</ttl>
   </channel>
 </rss>

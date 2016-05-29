@@ -1,0 +1,74 @@
+﻿@using NRSSCore.ViewModels.Home
+
+@model RSSItemsViewModel
+
+@{
+    ViewData["Title"] = "Manage RSS Items";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        
+        <div class="text-center">
+            <h2>Current RSS Items</h2>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                    <th>Published</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>                
+                    @if (Model.RSSItems != null)
+                    {
+                        foreach (RSSItemViewModel vm in Model.RSSItems)
+                        {
+                            <tr>
+                                <td>@vm.Title</td>
+                                <td>@vm.Description</td>
+                                <td>@vm.Link</td>
+                                <td>@(vm.PublishedDate.HasValue ? vm.PublishedDate.Value.Date.ToString("dd/MM/yyyy") : string.Empty)</td>
+                                <td>
+                                    <a href="/Home/EditItem/@vm.GUID" class="btn btn-info pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true" aria-label="Edit"></i></a>
+
+                                    @using (Html.BeginForm("DeleteItem", "Home", new { id = vm.GUID }, FormMethod.Post))
+                                    {
+                                        <button type="submit" class="btn btn-danger lmargin5"><i class="fa fa-trash" aria-hidden="true" aria-label="Delete"></i></button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }                
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <h2>Add RSS Item</h2>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            @using (Html.BeginForm("Items", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.LabelFor(c => c.RSSItem.Title)
+                @Html.TextBoxFor(c => c.RSSItem.Title, new { @class = "form-control" })
+
+                @Html.LabelFor(c => c.RSSItem.Description)
+                @Html.TextAreaFor(c => c.RSSItem.Description, new { @class = "form-control" })
+
+                @Html.LabelFor(c => c.RSSItem.Link)
+                @Html.TextBoxFor(c => c.RSSItem.Link, new { @class = "form-control" })                
+
+                <button type="submit" class="btn btn-primary tmargin10">Save</button> 
+            }
+        </div>
+
+    </div>
+</div>
